@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Product.sql" />
@@ -68,5 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="eCommerceDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishProfiles\eCommerceDB.publish.xml" />
   </ItemGroup>
 </Project>
