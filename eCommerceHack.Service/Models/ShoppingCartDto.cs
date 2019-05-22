@@ -4,7 +4,7 @@ using System.Text;
 
 namespace eCommerceHack.Service.Models
 {
-    class ShoppingCartDto
+    public class ShoppingCartDto
     {
         public int? ShoppingCartID { get; set;}
         public int? ItemsPerPage { get; set; }

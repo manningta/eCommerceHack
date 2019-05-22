@@ -1,6 +1,7 @@
 ﻿using eCommerceHack.API.Models;
 using eCommerceHack.Service.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace eCommerceHack.API.Controllers
 {
@@ -13,6 +14,12 @@ namespace eCommerceHack.API.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return new OkObjectResult("Success.");
+        }
+
         [HttpPost]
         public IActionResult AddItem([FromBody] AddItemDto item)
         {
@@ -20,7 +27,13 @@ namespace eCommerceHack.API.Controllers
 
             if (res == null) return new OkObjectResult(new { error = "No object created" });
 
-            return new OkObjectResult(res);
+            return new OkObjectResult(new
+            {
+                res.ShoppingCartItemId,
+                res.ShoppingCartId,
+                res.ProductId,
+                res.Quantity
+            });
         }
 
         [HttpGet]
@@ -28,9 +41,14 @@ namespace eCommerceHack.API.Controllers
         {
             var res = Service.ShoppingCart.ShoppingCart.GetOrders(dto, _context);
 
-            if (res == null) return new OkObjectResult(new { error = "No object created" });
+            if (res == null || !res.Any()) return new OkObjectResult(new { error = "No orders found." });
 
-            return new OkObjectResult(res);
+            return new OkObjectResult(res.Select(r => new
+            {
+                r.OrderDate,
+                r.OrderId,
+                r.OrderItem
+            }).ToArray());
         }
     }
 }
