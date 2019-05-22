@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace eCommerceHack.API.Controllers
 {
+    [Route("ShoppingCart")]
     public partial class ShoppingCartController : Controller
     {
         private eCommerceContext _context;
@@ -21,6 +22,7 @@ namespace eCommerceHack.API.Controllers
         }
 
         [HttpPost]
+        [Route("AddItem")]
         public IActionResult AddItem([FromBody] AddItemDto item)
         {
             var res = Service.ShoppingCart.ShoppingCart.AddItem(item, _context);
@@ -37,6 +39,7 @@ namespace eCommerceHack.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetOrders")]
         public IActionResult GetOrders([FromBody] GetOrdersDto dto)
         {
             var res = Service.ShoppingCart.ShoppingCart.GetOrders(dto, _context);
