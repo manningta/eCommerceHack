@@ -9,50 +9,71 @@ namespace eCommerceHack.Service.ShoppingCart
 {
     public partial class ShoppingCart2
     {
-        //public static bool CompleteOrder(int cartID, eCommerceContext _context)
-        //{
-        //    var cartItem = _context.ShoppingCart.FirstOrDefault(c => c.ShoppingCartId == cartID);
+        public static bool CompleteOrder(int cartID, eCommerceContext _context)
+        {
+            var cartItem = _context.ShoppingCart.FirstOrDefault(c => c.ShoppingCartId == cartID);
 
-        //    if (cartItem != null)
-        //    {
-        //        return false;
-        //    }
+            if (cartItem != null)
+            {
+                return false;
+            }
 
+            List<CartSummary> cartSummary = new List<CartSummary>();
 
+            //foreach (var product in cartItems.ShoppingCartItem)
 
-        //    List<CartSummary> cartSummary = new List<CartSummary>();
+            foreach (var item in cartItem.ShoppingCartItem)
+            {
+                var productSummary = cartSummary.FirstOrDefault(product => product.ItemName == item.Product.Name);
 
-        //    //foreach (var product in cartItems.ShoppingCartItem)
+                if ( productSummary == null )
+                {
+                    productSummary = new CartSummary(item.Product.Name);
+                    productSummary.ItemSubTotal += (item.Quantity * item.Product.Price);
+                    productSummary.ShippingTotal += (item.Quantity * item.Product.Shipping);
+                }
+                else
+                {
+                    productSummary.ItemSubTotal += ( item.Product.Price * item.Quantity );
+                    productSummary.ShippingTotal += item.Product.Shipping;
+                }
 
-        //    foreach (var item in cartItem.ShoppingCartItem)
-        //    {
-        //        var productSummary = new CartSummary(item.Product.Name);
+                cartSummary.Add(productSummary);                
+            }
+            return productSummary;
+        }
 
-        //        cartSummary.Add(productSummary);
+        public static ICollection<CartSummary> GetCartSummary(int cartID, eCommerceContext _context)
+        {
+            var cartItem = _context.ShoppingCart.FirstOrDefault(c => c.ShoppingCartId == cartID);
 
-        //        cartSummary.ItemSubTotal += (item.Quantity * item.Product.Price);
-        //        cartSummary.ShippingTotal += (item.Quantity * item.Product.Shipping);
-        //    }
-        //    return cartSummary;
-        //}
+            if (cartItem != null)
+            {
+                return null;
+            }
 
-        //public static ICollection<CartSummary> GetCartItems(int cartID, eCommerceContext _context)
-        //{
-        //    var cartItems = _context.ShoppingCart.FirstOrDefault( c => c.ShoppingCartId == cartID);
+            List<CartSummary> cartSummary = new List<CartSummary>();
 
-        //    if (cartItems != null)
-        //    {
-        //        return null;
-        //    }
+            foreach (var item in cartItem.ShoppingCartItem)
+            {
+                var productSummary = cartSummary.FirstOrDefault(product => product.ItemName == item.Product.Name);
 
-        //    List<CartSummary> cartSummary = new List<CartSummary>();
+                // If doesn't exist, create
+                if (productSummary == null)
+                {
+                    productSummary = new CartSummary(item.Product.Name);
+                    productSummary.ItemSubTotal += (item.Quantity * item.Product.Price);
+                    productSummary.ShippingTotal += (item.Quantity * item.Product.Shipping);
 
-        //    foreach (var item in cartItems.ShoppingCartItem)
-        //    {
-        //        cartSummary.ItemSubTotal += ( item.Quantity * item.Product.Price );
-        //        cartSummary.ShippingTotal += (item.Quantity * item.Product.Shipping);
-        //    }
-        //    return cartSummary;
-        //}
+                    cartSummary.Add(productSummary);
+                }
+                else
+                {
+                    productSummary.ItemSubTotal += (item.Product.Price * item.Quantity);
+                    productSummary.ShippingTotal += item.Product.Shipping;
+                }
+            }
+            return cartSummary;
+        }
     }
 }
