@@ -7,4 +7,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ProductId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="094fe0d7-69eb-4be1-bd2c-23d00d90b6f4" ChangeDateTime="05/22/2019 13:31:19">
+    <Property Name="ElementName" Value="[dbo].[Order].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Order]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OrderId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="240c011d-de77-4bd7-82e5-df7b49dda9ce" ChangeDateTime="05/22/2019 13:41:34">
+    <Property Name="ElementName" Value="[dbo].[OrderItem].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[OrderItem]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OrderItemId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="95b77bba-3e43-43a4-9b1f-43a99cd68d8d" ChangeDateTime="05/22/2019 13:41:52">
+    <Property Name="ElementName" Value="[dbo].[ShoppingCart].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ShoppingCart]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShoppingCartId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="afc04aa0-d92e-4d8e-8c0b-d461f0672aa9" ChangeDateTime="05/22/2019 13:43:26">
+    <Property Name="ElementName" Value="[dbo].[ShoppingCartItem].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ShoppingCartItem]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShoppingCartItemId" />
+  </Operation>
 </Operations>

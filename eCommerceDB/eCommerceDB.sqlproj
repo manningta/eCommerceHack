@@ -61,6 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Product.sql" />
+    <Build Include="Tables\Order.sql" />
+    <Build Include="Tables\OrderItem.sql" />
+    <Build Include="Tables\ShoppingCart.sql" />
+    <Build Include="Tables\ShoppingCartItem.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="eCommerceDB.refactorlog" />
