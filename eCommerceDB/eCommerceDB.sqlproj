@@ -59,6 +59,7 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="PublishProfiles\" />
+    <Folder Include="PostDeploymentScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Product.sql" />
@@ -72,5 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\eCommerceDB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeploymentScripts\Product.Script.sql" />
   </ItemGroup>
 </Project>
