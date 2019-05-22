@@ -1,6 +1,7 @@
 ﻿using eCommerceHack.API.Models;
+using eCommerceHack.Service.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using eCommerceHack.Service.ShoppingCart;
 
 namespace eCommerceHack.API.Controllers
 {
@@ -12,11 +13,12 @@ namespace eCommerceHack.API.Controllers
         {
             _context = context;
         }
+
+        public IActionResult AddItem([FromBody] AddItemDto item)
+        {
+            eCommerceHack.Service.ShoppingCart.ShoppingCart
+        }
     }
 
-    public class AddItemDto
-    {
-        public int? ProductId { get; set; }
-        public int? Quantity { get; set; }
-    }
+    
 }
