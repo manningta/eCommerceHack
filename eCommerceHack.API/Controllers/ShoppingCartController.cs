@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eCommerceHack.API.Controllers
 {
+    [Route("ShoppingCart")]
     public partial class ShoppingCartController : Controller
     {
         private eCommerceContext _context;
@@ -24,6 +25,7 @@ namespace eCommerceHack.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetOrders")]
         public IActionResult GetOrders([FromBody] GetOrdersDto dto)
         {
             var res = Service.ShoppingCart.ShoppingCart.GetOrders(dto, _context);
