@@ -22,7 +22,15 @@ namespace eCommerceHack.API.Controllers
 
             return new OkObjectResult(res);
         }
-    }
 
-    
+        [HttpGet]
+        public IActionResult GetOrders([FromBody] GetOrdersDto dto)
+        {
+            var res = Service.ShoppingCart.ShoppingCart.GetOrders(dto, _context);
+
+            if (res == null) return new OkObjectResult(new { error = "No object created" });
+
+            return new OkObjectResult(res);
+        }
+    }
 }
