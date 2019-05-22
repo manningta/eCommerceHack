@@ -6,12 +6,14 @@ namespace eCommerceHack.Service.Models
 {
     public class CartSummary
     {
-        public CartSummary()
+        public CartSummary(string itemName = "")
         {
             ItemSubTotal = 0;
             ShippingTotal = 0;
+            ItemName = itemName;
         }
 
+        public string ItemName;
         public decimal ItemSubTotal;
         public decimal ShippingTotal;
         public decimal OverallTotal
