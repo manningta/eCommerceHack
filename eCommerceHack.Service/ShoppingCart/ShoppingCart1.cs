@@ -28,7 +28,7 @@ namespace eCommerceHack.Service.ShoppingCart
                 Quantity = item.Quantity ?? 0
             };
 
-            cart.ShoppingCartItem = new[] { cartItem };
+            cart.ShoppingCartItem.Add(cartItem);
 
             _context.SaveChanges();
 

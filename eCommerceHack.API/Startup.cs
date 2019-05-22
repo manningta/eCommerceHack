@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerceHack.API
@@ -25,6 +26,12 @@ namespace eCommerceHack.API
             }
 
             app.UseMvc();
+        }
+
+        private void ConfigureRoute(IRouteBuilder routeBuilder)
+        {
+            //Home/Index 
+            routeBuilder.MapRoute("Default", "{controller = ShoppingCart}/{action = Index}");
         }
     }
 }
