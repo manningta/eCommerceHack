@@ -4,5 +4,6 @@ namespace eCommerceHack.API.Controllers
 {
     public partial class ShoppingCartController : Controller
     {
+        
     }
 }
