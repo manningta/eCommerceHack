@@ -5,16 +5,19 @@ using System.Linq;
 namespace eCommerceHack.Service.ShoppingCart
 {
     public partial class ShoppingCart3
-    {       
-        public static ShoppingCartItem GetCart(GetItem item, eCommerceContext _context)
+    {
+        public static IEnumerable<ShoppingCartItem> GetCart(ShoppingCartDto dto, eCommerceContext _context)
         {
-            if (!_context.ShoppingCart.Any(x => x.ShoppingCartID = item.ShopppingCartID)) return null;
+            if (dto.ShoppingCartItemId == null || dto.ShoppingCartItemId < 1)
+                return null;
 
-            if (item.Quantity <= 0) return null;
+            var ipp = dto.ItemsPerPage ?? 0;
+            var pn = dto.PageNumber ?? 0;
 
-            //var cart = _context.
-
-            return GetCart;
+            var cart = _context.ShoppingCartItem.FirstOrDefault(x => x.ShoppingCartId == dto.ShoppingCartID);            
+            var items = cart.Order.Skip(ipp * (pn - 1)).Take(ipp);
+            
+            return cart;
         }
 
     }

@@ -1,7 +1,6 @@
 ﻿using eCommerceHack.API.Models;
 using eCommerceHack.Service.Models;
 using Microsoft.AspNetCore.Mvc;
-using eCommerceHack.Service.ShoppingCart;
 
 namespace eCommerceHack.API.Controllers
 {
@@ -16,7 +15,7 @@ namespace eCommerceHack.API.Controllers
         
         public IActionResult GetCart([FromBody] ShoppingCartDto cartDto)
         {
-            var cartDto = Service.ShoppingCart.ShoppingCart.GetCart(item, _context);
+            var cartDto = Service.ShoppingCart.ShoppingCart.GetCart(cartDto, _context);
 
             if (cartDto == null) return new OkObjectResult(new { error = "No items found in cart" });
 
