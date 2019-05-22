@@ -31,7 +31,7 @@ namespace eCommerceHack.API
         private void ConfigureRoute(IRouteBuilder routeBuilder)
         {
             //Home/Index 
-            routeBuilder.MapRoute("Default", "{controller = ShoppingCart}/{action = Index}");
+            routeBuilder.MapRoute("Default", "{controller = ShoppingCart}/{action}");
         }
     }
 }

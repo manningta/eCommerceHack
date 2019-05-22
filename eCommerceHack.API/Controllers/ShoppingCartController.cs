@@ -14,6 +14,12 @@ namespace eCommerceHack.API.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return new OkObjectResult("Success.");
+        }
+
         [HttpPost]
         public IActionResult AddItem([FromBody] AddItemDto item)
         {
