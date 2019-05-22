@@ -1,7 +1,6 @@
 ﻿using eCommerceHack.API.Models;
 using eCommerceHack.Service.Models;
 using Microsoft.AspNetCore.Mvc;
-using eCommerceHack.Service.ShoppingCart;
 
 namespace eCommerceHack.API.Controllers
 {
@@ -14,9 +13,14 @@ namespace eCommerceHack.API.Controllers
             _context = context;
         }
 
+        [HttpPost]
         public IActionResult AddItem([FromBody] AddItemDto item)
         {
-            eCommerceHack.Service.ShoppingCart.ShoppingCart
+            var res = Service.ShoppingCart.ShoppingCart.AddItem(item, _context);
+
+            if (res == null) return new OkObjectResult(new { error = "No object created" });
+
+            return new OkObjectResult(res);
         }
     }
 
