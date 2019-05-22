@@ -28,10 +28,10 @@ namespace eCommerceHack.API
             app.UseMvc();
         }
 
-        private void ConfigureRoute(IRouteBuilder routeBuilder)
-        {
-            //Home/Index 
-            routeBuilder.MapRoute("Default", "{controller = ShoppingCart}/{action}");
-        }
+        //private void ConfigureRoute(IRouteBuilder routeBuilder)
+        //{
+        //    //Home/Index 
+        //    routeBuilder.MapRoute("Default", "{controller = ShoppingCart}/{action}");
+        //}
     }
 }
